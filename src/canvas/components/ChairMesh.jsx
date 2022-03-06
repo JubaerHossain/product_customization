@@ -11,8 +11,8 @@ const INITIAL_MTL = new THREE.MeshPhongMaterial({
 
 const INITIAL_MAP = [
     {childID: "back", mtl: INITIAL_MTL},
-    {childID: "base", mtl: INITIAL_MTL},
-    {childID: "cushions", mtl: INITIAL_MTL},
+    {childID: "line_img_2", mtl: INITIAL_MTL},
+    {childID: "line_img_3", mtl: INITIAL_MTL},
     {childID: "legs", mtl: INITIAL_MTL},
     {childID: "supports", mtl: INITIAL_MTL}
     ];

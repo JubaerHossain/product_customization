@@ -25,7 +25,7 @@ const options = [
 
 export const OptionsMenu = ({ activeOption, setActiveOption }) => {
   return (
-    <span>
+    <div className="Colors">
       {options.map(({ name, img }, idx) => (
         <span
           className={`option ${activeOption === name ? "--is-active" : ""}`}
@@ -36,6 +36,6 @@ export const OptionsMenu = ({ activeOption, setActiveOption }) => {
           <img src={img} alt="" />
         </span>
       ))}
-    </span>
+    </div>
   );
 };

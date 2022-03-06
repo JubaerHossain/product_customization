@@ -36,7 +36,7 @@
         },
         {
             "mesh" : 1,
-            "name" : "cushions",
+            "name" : "line_img_3",
             "rotation" : [
                 0,
                 1,
@@ -81,7 +81,7 @@
         },
         {
             "mesh" : 4,
-            "name" : "base",
+            "name" : "line_img_2",
             "rotation" : [
                 0,
                 1,

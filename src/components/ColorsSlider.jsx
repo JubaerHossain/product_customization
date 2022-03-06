@@ -62,11 +62,11 @@ const ColorsSlider = ({selectSwatch}) => {
     }
 
     return (
-        <div id="js-tray" className="tray" ref={slider}>
+        <li>
+                            <div className="radius-icon" ref={slider}>
             <div
                 id="js-tray-slide"
-                 className="tray__slide"
-                 ref={sliderItems}
+                ref={sliderItems}
                 onMouseDown={dragStart}
                 onTouchStart={dragStart}
                 onTouchMove={dragAction}
@@ -84,7 +84,8 @@ const ColorsSlider = ({selectSwatch}) => {
                     />
                 ))}
             </div>
-        </div>
+            </div>
+        </li>
     )
 }
 
