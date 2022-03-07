@@ -2,7 +2,6 @@ export const COLORS = [
     {
         color: '131417'
     },
-
     {
         color: '374047'
     },

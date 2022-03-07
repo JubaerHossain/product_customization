@@ -11,8 +11,10 @@ export const Scene = ({ newMaterialOpt }) => {
   const {
     scene,
     camera,
+    activeOption,
     gl: { domElement, shadowMap }
   } = useThree();
+  console.log(activeOption);
 
   // Scene configuration;
   useEffect(() => {

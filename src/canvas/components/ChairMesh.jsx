@@ -13,7 +13,7 @@ const INITIAL_MAP = [
     {childID: "back", mtl: INITIAL_MTL},
     {childID: "line_img_2", mtl: INITIAL_MTL},
     {childID: "line_img_3", mtl: INITIAL_MTL},
-    {childID: "legs", mtl: INITIAL_MTL},
+    {childID: "line_img_1", mtl: INITIAL_MTL},
     {childID: "supports", mtl: INITIAL_MTL}
     ];
 
