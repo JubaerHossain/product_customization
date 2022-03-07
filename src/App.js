@@ -1,21 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./Style.css";
 import { Scene } from "./canvas/Scene";
 import ColorsSlider from "./components/ColorsSlider";
-import { OptionsMenu } from "./components/OptionsMenu";
 import { ImageMenu } from "./components/ImageMenu";
 import { COLORS } from "./constants/colors";
 import * as THREE from "three";
 import { Canvas } from "react-three-fiber";
 
 const App = () => {
-  const [activeOption, setActiveOption] = useState("line_img_1");
+  const [activeOption, setActiveOption] = useState("line_img_2");
+  const [objectRotation, setObjectRotation] = useState([0, Math.PI, 0])
+
   const [newMaterialOpt, setNewMaterialOpt] = useState({
     activeOption,
     newMTL: null
   });
 
+
+  useEffect(() => {
+    if(activeOption === 'line_img_2'){
+      setObjectRotation([0, Math.PI, 0]);
+    }else if(activeOption === 'line_img_6' || activeOption === 'line_img_1'){
+      setObjectRotation([0, -1.6, 0]);
+    }else if(activeOption === 'line_img_8' || activeOption === 'line_img_3'){
+      setObjectRotation([0, 1.6, 0]);
+    }else if(activeOption === 'line_img_12'){
+      setObjectRotation([0, 0, 0]);
+    }else{
+      setObjectRotation([0, Math.PI, 0]);
+    }
+
+    console.log(activeOption);
+  }, [activeOption])
 
   const selectSwatch = (e) => {
     let color = COLORS[parseInt(e.target.dataset.key)];
@@ -77,23 +94,9 @@ const App = () => {
         </div>
         <div className="box-container-right">
           <Canvas id="rtfCanvas">
-            <Scene newMaterialOpt={newMaterialOpt} />
+            <Scene newMaterialOpt={newMaterialOpt} objectRotation={objectRotation} />
           </Canvas>
         </div>
-        {/* <span>
-        <OptionsMenu
-          activeOption={activeOption}
-          setActiveOption={setActiveOption}
-        />
-        </span>
-        <Canvas id="rtfCanvas">
-          <Scene newMaterialOpt={newMaterialOpt} />
-        </Canvas>
-        <div className="controls">
-          <ColorsSlider selectSwatch={selectSwatch} />
-        </div>
-        <div className="frame">
-        </div> */}
       </div>
     </React.Fragment>
   );

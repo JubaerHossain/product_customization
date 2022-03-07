@@ -10,13 +10,26 @@ const INITIAL_MTL = new THREE.MeshPhongMaterial({
 });
 
 const INITIAL_MAP = [
-    {childID: "back", mtl: INITIAL_MTL},
+
+    // back
+    {childID: "line_img_12", mtl: INITIAL_MTL},
+    // back
+
+    //base
+    {childID: "line_img_7", mtl: INITIAL_MTL},
+    //base
+
+
+    //cushions
     {childID: "line_img_2", mtl: INITIAL_MTL},
-    {childID: "line_img_3", mtl: INITIAL_MTL},
+    //cushions
+    // start for leg
     {childID: "line_img_1", mtl: INITIAL_MTL},
+    // {childID: "line_img_3", mtl: INITIAL_MTL},
+    // start for leg
     {childID: "supports", mtl: INITIAL_MTL}
     ];
-
+console.log(INITIAL_MAP);
 const initColor = (parent, type, mtl) => {
     parent.traverse(o => {
         if (o.isMesh && o.name.includes(type)) {
@@ -28,7 +41,7 @@ const initColor = (parent, type, mtl) => {
     });
 }
 
-const ChairMesh = ({newMaterialOpt}) => {
+const ChairMesh = ({newMaterialOpt, objectRotation}) => {
     const {scene: theModel} = useLoader(GLTFLoader, "chair.gltf");
     const chair = useRef(theModel)
 
@@ -59,7 +72,9 @@ const ChairMesh = ({newMaterialOpt}) => {
         ref={chair}
         object={theModel}
         scale={[2, 2, 2]}
-        rotation={[0, Math.PI, 0]}
+        onUpdate={self => {
+        }}
+        rotation={objectRotation}
         position={[0, -1, 0]}
         receiveShadow
         castShadow

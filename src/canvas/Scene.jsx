@@ -7,14 +7,13 @@ import * as THREE from "three";
 
 extend({ OrbitControls });
 
-export const Scene = ({ newMaterialOpt }) => {
+export const Scene = ({  newMaterialOpt, objectRotation  }) => {
   const {
     scene,
     camera,
     activeOption,
     gl: { domElement, shadowMap }
   } = useThree();
-  console.log(activeOption);
 
   // Scene configuration;
   useEffect(() => {
@@ -24,7 +23,6 @@ export const Scene = ({ newMaterialOpt }) => {
     camera.fov = 100;
     directionalLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
     shadowMap.enabled = true;
-    console.log("scene" + scene);
   }, []);
 
   return (
@@ -43,7 +41,7 @@ export const Scene = ({ newMaterialOpt }) => {
         castShadow
       />
       <Suspense fallback={null}>
-        <ChairMesh newMaterialOpt={newMaterialOpt} />
+      <ChairMesh newMaterialOpt={newMaterialOpt} objectRotation={objectRotation}/>
         <Floor />
       </Suspense>
     </>

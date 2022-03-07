@@ -2,7 +2,6 @@ import React from "react";
 
 
 export const ImageMenu = ({ activeOption, setActiveOption }) => {
-  console.log(activeOption);
   return (
     <div className="row">
         <div className="line-1">
