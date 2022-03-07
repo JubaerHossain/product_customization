@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as THREE from "three";
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {useLoader} from "react-three-fiber";
@@ -29,7 +29,6 @@ const INITIAL_MAP = [
     // start for leg
     {childID: "supports", mtl: INITIAL_MTL}
     ];
-console.log(INITIAL_MAP);
 const initColor = (parent, type, mtl) => {
     parent.traverse(o => {
         if (o.isMesh && o.name.includes(type)) {
@@ -41,10 +40,14 @@ const initColor = (parent, type, mtl) => {
     });
 }
 
-const ChairMesh = ({newMaterialOpt, objectRotation}) => {
+
+
+
+
+const ChairMesh = ({newMaterialOpt, objectRotation, activeOption, setActiveOption}) => {
     const {scene: theModel} = useLoader(GLTFLoader, "chair.gltf");
     const chair = useRef(theModel)
-
+    const [clicked, click] = useState()
     useEffect(() =>
             void setMaterial(newMaterialOpt.activeOption, newMaterialOpt.newMTL)
         , [newMaterialOpt.newMTL])
@@ -57,6 +60,7 @@ const ChairMesh = ({newMaterialOpt, objectRotation}) => {
         }
     }, [theModel])
 
+
     const setMaterial = (type, mtl) => {
         theModel.traverse(o => {
             if (o.isMesh && o.nameID != null) {
@@ -66,14 +70,17 @@ const ChairMesh = ({newMaterialOpt, objectRotation}) => {
             }
         });
     }
-
+    useEffect(() => {
+        if(clicked){
+            setActiveOption(clicked)
+        }
+    }, [clicked])
 
     return <primitive
         ref={chair}
         object={theModel}
         scale={[2, 2, 2]}
-        onUpdate={self => {
-        }}
+        onClick={(theModel) => click(theModel.object.name)}
         rotation={objectRotation}
         position={[0, -1, 0]}
         receiveShadow

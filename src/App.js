@@ -30,8 +30,6 @@ const App = () => {
     }else{
       setObjectRotation([0, Math.PI, 0]);
     }
-
-    console.log(activeOption);
   }, [activeOption])
 
   const selectSwatch = (e) => {
@@ -94,7 +92,7 @@ const App = () => {
         </div>
         <div className="box-container-right">
           <Canvas id="rtfCanvas">
-            <Scene newMaterialOpt={newMaterialOpt} objectRotation={objectRotation} />
+            <Scene newMaterialOpt={newMaterialOpt} objectRotation={objectRotation}  activeOption={activeOption}  setActiveOption={setActiveOption} />
           </Canvas>
         </div>
       </div>

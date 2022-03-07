@@ -7,11 +7,10 @@ import * as THREE from "three";
 
 extend({ OrbitControls });
 
-export const Scene = ({  newMaterialOpt, objectRotation  }) => {
+export const Scene = ({  newMaterialOpt, objectRotation, activeOption,setActiveOption, }) => {
   const {
     scene,
     camera,
-    activeOption,
     gl: { domElement, shadowMap }
   } = useThree();
 
@@ -41,7 +40,7 @@ export const Scene = ({  newMaterialOpt, objectRotation  }) => {
         castShadow
       />
       <Suspense fallback={null}>
-      <ChairMesh newMaterialOpt={newMaterialOpt} objectRotation={objectRotation}/>
+      <ChairMesh newMaterialOpt={newMaterialOpt} objectRotation={objectRotation} activeOption={activeOption}  setActiveOption={setActiveOption}/>
         <Floor />
       </Suspense>
     </>
