@@ -10,7 +10,7 @@ import * as THREE from "three";
 import { Canvas } from "react-three-fiber";
 
 const App = () => {
-  const [activeOption, setActiveOption] = useState("legs");
+  const [activeOption, setActiveOption] = useState("line_img_1");
   const [newMaterialOpt, setNewMaterialOpt] = useState({
     activeOption,
     newMTL: null
